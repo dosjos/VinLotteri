@@ -70,8 +70,9 @@ namespace VinLotteri
         private void loadWeekSales()
         {
             TextReader tr = null;
-            using (tr = new StreamReader(week + "_lotto.txt"))
+            try
             {
+                tr = new StreamReader(week + "_lotto.txt");
                 string s = "";
                 string res = "";
                 while ((s = tr.ReadLine()) != null)
@@ -79,6 +80,10 @@ namespace VinLotteri
                     res += s + '\n';
                 }
                 richTextBox1.Text = res.Trim();
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.StackTrace);
             }
         }
 
