@@ -1,0 +1,11 @@
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\bin\Debug\VinLotteri.exe
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\bin\Debug\VinLotteri.pdb
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Form1.resources
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Properties.Resources.resources
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.exe
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.pdb
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.WinnerWindow.resources
+c:\users\skottjan\documents\visual studio 2010\Projects\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Form2.resources
