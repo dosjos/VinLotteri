@@ -9,5 +9,5 @@ For å innstalere programmet må denne pakken lastes ned:
 https://github.com/dosjos/VinLotteri/blob/master/setup.zip
 
 Så er det bare til å unzippe og installere. Programmet finner du da i startmenyen under Visma -> VinLotteri
-
+Just kidding, instalasjonsfilen feiler, compile yourself
 Happy Vintrekking
