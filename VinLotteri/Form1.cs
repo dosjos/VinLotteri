@@ -42,7 +42,20 @@ namespace VinLotteri
             "Geir",
             "Jan Ole",
             "Jon",
-            "Ragne"};
+            "Ragne",
+            "Connie",
+            "Vibekke",
+            "Petter",
+            "Ludvigsen", //2
+            "Helene", //1
+            "Lars", //2
+            "Morten", //5
+            "Maria", //1
+            "Helge", // 1
+            "Bent", // 5
+            "Ida", //1
+            "Hege"
+            };
 
             this.comboBox1.Items.AddRange(AllNames);
 
@@ -85,6 +98,18 @@ namespace VinLotteri
             {
                 Console.WriteLine(e.StackTrace);
             }
+            finally
+            {
+                try
+                {
+                    tr.Close();
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            sumSales();
         }
 
         //Register sale
@@ -98,8 +123,14 @@ namespace VinLotteri
             }
             richTextBox1.Text = richTextBox1.Text.Trim();
             saveInformation();
+            sumSales();
         }
 
+        private void sumSales()
+        {
+            label6.Text = "" + richTextBox1.Lines.Length + " Lodd er solgt (" + richTextBox1.Lines.Length * 20 + " kr)";
+            updateLoddCounter();    
+        }
 
         //Writes sales to file
         private void saveInformation()
@@ -114,11 +145,6 @@ namespace VinLotteri
             }
         }
 
-        //Return number of years since last time Genneral Eidsenhover had sex, or the current weeknumber.
-        public int WeekNumber(System.DateTime value)
-        {
-            return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(value, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-        }
 
         //STD method
         private void Form1_Load(object sender, EventArgs e)
@@ -136,17 +162,51 @@ namespace VinLotteri
             {
                 arr[i] = richTextBox1.Lines[i];
             }
-            WinnerWindow ww = new WinnerWindow(arr, AllNames);
+            WinnerWindow ww = new WinnerWindow(arr, AllNames, this);
             ww.Show();
         }
 
         //Changes week
         private void button3_Click(object sender, EventArgs e)
         {
+            changeWeek();
+        }
+
+        private void changeWeek()
+        {
             week = (int)numericUpDown2.Value;
             richTextBox1.Text = "";
             loadWeekSales();
             SetTitle();
+            updateLoddCounter();
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            changeWeek();
+        }
+
+        internal void RemoveWinner(string Winner)
+        {
+            int index = richTextBox1.Text.IndexOf(Winner);
+            richTextBox1.Text = richTextBox1.Text.Remove(index, Winner.Length+1); //TODO Fix bug if drawn player is the last in the list
+            richTextBox1.Text = richTextBox1.Text.Insert(index, "");
+            richTextBox1.Text.Trim();
+            saveInformation();
+            updateLoddCounter();
+        }
+
+        private void updateLoddCounter()
+        {
+            label7.Text = "" + richTextBox1.Lines.Length + " å trekke fra";
+        }
+
+        internal void SaveVinner(string Winner)
+        {
+            using (TextWriter tw = new StreamWriter(week + "_vinnere.txt", true))
+            {
+             tw.Write(Winner + '\n');
+            }
         }
     }
 }

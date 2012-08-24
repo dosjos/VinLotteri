@@ -18,4 +18,6 @@ namespace VinLotteri
             Application.Run(new Form1());
         }
     }
+
+    //ADDED THIS COMMENT
 }
