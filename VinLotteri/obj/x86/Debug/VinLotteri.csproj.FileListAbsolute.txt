@@ -14,8 +14,6 @@ C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\bin\Debug\VinLotteri.ap
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\bin\Debug\VinLotteri.exe
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\bin\Debug\VinLotteri.pdb
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Form1.resources
-C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Form2.resources
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Properties.Resources.resources
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.WinnerWindow.resources
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\GenerateResource.read.1.tlog
@@ -24,3 +22,5 @@ C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotter
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.application
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.exe
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.pdb
+C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Main.resources
+C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.GraphWindow.resources

@@ -1,6 +1,6 @@
 ﻿namespace VinLotteri
 {
-    partial class Form2
+    partial class GraphWindow
     {
         /// <summary>
         /// Required designer variable.

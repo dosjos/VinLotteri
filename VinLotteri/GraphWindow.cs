@@ -10,14 +10,14 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace VinLotteri
 {
-    public partial class Form2 : Form
+    public partial class GraphWindow : Form
     {
-        public Form2()
+        public GraphWindow()
         {
             InitializeComponent();
         }
 
-        public Form2(int[]draws, String[] names, String Winner)
+        public GraphWindow(int[]draws, String[] names, String Winner)
         {
             InitializeComponent();
             chart1.Series["Series1"].ChartType = SeriesChartType.Bar;

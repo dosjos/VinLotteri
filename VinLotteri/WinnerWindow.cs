@@ -21,8 +21,8 @@ namespace VinLotteri
 		System.Timers.Timer timer;
 		public delegate void DelLabelText(Label l, string s);
 		public DelLabelText delLabelText;
-        Form1 form;
-        int drawPlace = 3;
+        Main form;
+
 
 		//Default constructor
 		public WinnerWindow()
@@ -31,7 +31,7 @@ namespace VinLotteri
 		}
 
 		//Bacon constructor
-		public WinnerWindow(string[] arr, String[]All, Form1 form)
+		public WinnerWindow(string[] arr, String[]All, Main form)
 		{
 			InitializeComponent();
 			random = new Random();
@@ -114,7 +114,7 @@ namespace VinLotteri
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2(DrawsArray, AllNames, label3.Text);
+            GraphWindow f = new GraphWindow(DrawsArray, AllNames, label3.Text);
             f.Show();
         }
 

@@ -12,7 +12,7 @@ using System.IO;
 
 namespace VinLotteri
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         static IList list = new ArrayList();
         String name;
@@ -25,7 +25,7 @@ namespace VinLotteri
         DayOfWeek myFirstDOW;
 
         //Initiate stuff
-        public Form1()
+        public Main()
         {
             InitializeComponent();
             comboBox1.Text = "Velg kjøper";
@@ -44,19 +44,19 @@ namespace VinLotteri
             "Jon",
             "Ragne",
             "Connie",
-            "Vibekke",
+            "Vibeke",
             "Petter",
-            "Ludvigsen", //2
-            "Helene", //1
-            "Lars", //2
-            "Morten", //5
-            "Maria", //1
-            "Helge", // 1
-            "Bent", // 5
-            "Ida", //1
+            "Ludvigsen", 
+            "Helene", 
+            "Lars", 
+            "Morten", 
+            "Maria",
+            "Helge", 
+            "Bent", 
+            "Ida", 
             "Hege"
             };
-
+            button2.Enabled = false;
             this.comboBox1.Items.AddRange(AllNames);
 
             myCI = new CultureInfo("en-US");
@@ -110,6 +110,19 @@ namespace VinLotteri
                 }
             }
             sumSales();
+            buttonEnabling();
+        }
+
+        private void buttonEnabling()
+        {
+            if (richTextBox1.Lines.Length < 0)
+            {
+                button2.Enabled = true;
+            }
+            else
+            {
+                button2.Enabled = false;
+            }
         }
 
         //Register sale
@@ -189,11 +202,22 @@ namespace VinLotteri
         internal void RemoveWinner(string Winner)
         {
             int index = richTextBox1.Text.IndexOf(Winner);
-            richTextBox1.Text = richTextBox1.Text.Remove(index, Winner.Length+1); //TODO Fix bug if drawn player is the last in the list
-            richTextBox1.Text = richTextBox1.Text.Insert(index, "");
-            richTextBox1.Text.Trim();
-            saveInformation();
-            updateLoddCounter();
+            try
+            {
+                richTextBox1.Text = richTextBox1.Text.Remove(index, Winner.Length + 1); //This is the dirtiest bugfix ever
+            }
+            catch (Exception e)
+            {
+                richTextBox1.Text = richTextBox1.Text.Remove(index, Winner.Length);
+            }
+            finally
+            {
+                richTextBox1.Text = richTextBox1.Text.Insert(index, "");
+                richTextBox1.Text.Trim();
+                saveInformation();
+                updateLoddCounter();
+            }
+
         }
 
         private void updateLoddCounter()
