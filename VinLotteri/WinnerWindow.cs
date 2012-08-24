@@ -21,7 +21,7 @@ namespace VinLotteri
 		System.Timers.Timer timer;
 		public delegate void DelLabelText(Label l, string s);
 		public DelLabelText delLabelText;
-        Main form;
+		Main form;
 
 
 		//Default constructor
@@ -38,14 +38,14 @@ namespace VinLotteri
 			AllNames = All;
 			NumberOfDraws = random.Next(100, 250);
 			Draws = arr;
-            this.form = form;
+			this.form = form;
 			delLabelText = Label_Text;
 
 			DrawsArray = new int[All.Length];
 			timer  = new System.Timers.Timer();
 			timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 			timer.Enabled = true;
-           // button1.Enabled = false;
+		   // button1.Enabled = false;
 		}
 
 
@@ -60,7 +60,7 @@ namespace VinLotteri
 			{
 				timer.Enabled = false;
 				label3.ForeColor = System.Drawing.Color.Green;
-               // button1.Enabled = true;
+			   // button1.Enabled = true;
 			}
 			else
 			{
@@ -80,24 +80,24 @@ namespace VinLotteri
 					DrawsArray[i]++;
 				}
 			}
-            PublishDraw(r);
+			PublishDraw(r);
 		}
 
-        private void PublishDraw(int r)
-        {
-           Label_Text(label3, Draws[r]);
-        }
+		private void PublishDraw(int r)
+		{
+		   Label_Text(label3, Draws[r]);
+		}
 
 		//Method for changing the winner name label
 		public void Label_Text(Label label, string text)
 		{
 			if (label.InvokeRequired)
 			{
-                try
-                {
-                    label.Invoke(delLabelText, new object[] { label, text });
-                }
-                catch (Exception e) { }
+				try
+				{
+					label.Invoke(delLabelText, new object[] { label, text });
+				}
+				catch (Exception e) { }
 			}
 			else
 			{
@@ -111,16 +111,16 @@ namespace VinLotteri
 			timer.Enabled = false;
 			timer.Dispose();
 
-            form.RemoveWinner(label3.Text);
-            form.SaveVinner(label3.Text);
+			form.RemoveWinner(label3.Text);
+			form.SaveVinner(label3.Text);
 			Close();
 		}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            GraphWindow f = new GraphWindow(DrawsArray, AllNames, label3.Text);
-            f.Show();
-        }
+		private void button2_Click(object sender, EventArgs e)
+		{
+			GraphWindow f = new GraphWindow(DrawsArray, AllNames, label3.Text);
+			f.Show();
+		}
 
 
 
