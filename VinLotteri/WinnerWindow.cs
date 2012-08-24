@@ -85,84 +85,7 @@ namespace VinLotteri
 
         private void PublishDraw(int r)
         {
-
-            if (drawPlace == 3)
-            {
-                Label_Text(label3, Draws[r]);
-            }
-            else if (drawPlace == 4)
-            {
-                Label_Text(label4, Draws[r]);
-            }
-            else if (drawPlace == 5)
-            {
-                Label_Text(label5, Draws[r]);
-            }
-            else if (drawPlace == 6)
-            {
-                Label_Text(label6, Draws[r]);
-            }
-            else if (drawPlace ==7)
-            {
-                Label_Text(label7, Draws[r]);
-            }
-            else if (drawPlace == 8)
-            {
-                Label_Text(label8, Draws[r]);
-            }
-            else if (drawPlace == 9)
-            {
-                Label_Text(label9, Draws[r]);
-            }
-            else if (drawPlace == 10)
-            {
-                Label_Text(label10, Draws[r]);
-            }
-            else if (drawPlace == 11)
-            {
-                Label_Text(label11, Draws[r]);
-            }
-            else if (drawPlace == 12)
-            {
-                Label_Text(label12, Draws[r]);
-            }
-            else if (drawPlace == 13)
-            {
-                Label_Text(label13, Draws[r]);
-            }
-            else if (drawPlace == 14)
-            {
-                Label_Text(label14, Draws[r]);
-            }
-            else if (drawPlace ==15)
-            {
-                Label_Text(label15, Draws[r]);
-            }
-            else if (drawPlace == 16)
-            {
-                Label_Text(label16, Draws[r]);
-            }
-            else if (drawPlace == 17)
-            {
-                Label_Text(label17, Draws[r]);
-            }
-            else if (drawPlace == 18)
-            {
-                Label_Text(label18, Draws[r]);
-            }
-            else if (drawPlace == 19)
-            {
-                Label_Text(label19, Draws[r]);
-            }
-            else if (drawPlace == 20)
-            {
-                Label_Text(label20, Draws[r]);
-            }
-            drawPlace++;
-
-            if (drawPlace > 20) {
-                drawPlace = 3;
-            }
+           Label_Text(label3, Draws[r]);
         }
 
 		//Method for changing the winner name label
@@ -183,10 +106,17 @@ namespace VinLotteri
 		{
 			timer.Enabled = false;
 			timer.Dispose();
-			Form2 f = new Form2(DrawsArray, AllNames, label3.Text, form);
-			f.Show();
+
+            form.RemoveWinner(label3.Text);
+            form.SaveVinner(label3.Text);
 			Close();
 		}
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2(DrawsArray, AllNames, label3.Text);
+            f.Show();
+        }
 
 
 

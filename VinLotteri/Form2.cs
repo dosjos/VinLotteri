@@ -12,16 +12,14 @@ namespace VinLotteri
 {
     public partial class Form2 : Form
     {
-        Form1 form;
         public Form2()
         {
             InitializeComponent();
         }
 
-        public Form2(int[]draws, String[] names, String Winner, Form1 form)
+        public Form2(int[]draws, String[] names, String Winner)
         {
             InitializeComponent();
-            this.form = form;
             chart1.Series["Series1"].ChartType = SeriesChartType.Bar;
             chart1.Series["Series1"].Color = Color.Blue;
             chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
@@ -36,8 +34,6 @@ namespace VinLotteri
                     chart1.Series["Series1"].Points.Add(draws[i]).AxisLabel = names[i];
                 }
             }
-            form.RemoveWinner(Winner);
-            form.SaveVinner(Winner);
           }
 
         private void button1_Click(object sender, EventArgs e)
