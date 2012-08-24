@@ -93,7 +93,11 @@ namespace VinLotteri
 		{
 			if (label.InvokeRequired)
 			{
-				label.Invoke(delLabelText, new object[] { label, text });
+                try
+                {
+                    label.Invoke(delLabelText, new object[] { label, text });
+                }
+                catch (Exception e) { }
 			}
 			else
 			{

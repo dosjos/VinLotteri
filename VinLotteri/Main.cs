@@ -115,7 +115,7 @@ namespace VinLotteri
 
         private void buttonEnabling()
         {
-            if (richTextBox1.Lines.Length < 0)
+            if (richTextBox1.Lines.Length > 0)
             {
                 button2.Enabled = true;
             }
@@ -156,6 +156,7 @@ namespace VinLotteri
                     tw.Write(richTextBox1.Lines[i] + '\n');
                 }
             }
+            buttonEnabling();
         }
 
 
@@ -217,7 +218,7 @@ namespace VinLotteri
                 saveInformation();
                 updateLoddCounter();
             }
-
+            buttonEnabling();
         }
 
         private void updateLoddCounter()
