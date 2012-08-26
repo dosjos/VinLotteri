@@ -129,6 +129,8 @@ namespace VinLotteri
         private void button1_Click(object sender, EventArgs e)
         {
             name = comboBox1.Text;
+            CheckIfNameInListAndAdd(name);
+
             int number = (int)numericUpDown1.Value;
             for (int i = 0; i < number; i++)
             {
@@ -137,6 +139,18 @@ namespace VinLotteri
             richTextBox1.Text = richTextBox1.Text.Trim();
             saveInformation();
             sumSales();
+        }
+
+        private void CheckIfNameInListAndAdd(string name)
+        {
+            var name2 = from names in comboBox1.Items.ToString()
+                        where names.Equals(name)
+                        select names;//linq bitches
+
+            if (!name2.Equals(name))
+            {
+                comboBox1.Items.Add(name);
+            }
         }
 
         private void sumSales()
