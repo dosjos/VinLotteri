@@ -24,3 +24,5 @@ C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotter
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.pdb
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.Main.resources
 C:\Users\skottjan\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.GraphWindow.resources
+C:\Users\Jan Ole\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.exe
+C:\Users\Jan Ole\Documents\GitHub\VinLotteri\VinLotteri\obj\x86\Debug\VinLotteri.pdb
