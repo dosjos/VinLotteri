@@ -79,8 +79,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Andreas.cs" />
-    <Compile Include="Andreas2.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
