@@ -16,7 +16,6 @@ namespace VinLotteri
 		int NumberOfDraws;
 		Random random;
 		string[] Draws;
-		String[] AllNames;
 		int[] DrawsArray;
 		System.Timers.Timer timer;
 		public delegate void DelLabelText(Label l, string s);
@@ -31,21 +30,19 @@ namespace VinLotteri
 		}
 
 		//Bacon constructor
-		public WinnerWindow(string[] arr, String[]All, Main form)
+		public WinnerWindow(string[] arr, Main form)
 		{
 			InitializeComponent();
 			random = new Random();
-			AllNames = All;
 			NumberOfDraws = random.Next(100, 250);
 			Draws = arr;
 			this.form = form;
 			delLabelText = Label_Text;
 
-			DrawsArray = new int[All.Length];
+			DrawsArray = new int[arr.Length];
 			timer  = new System.Timers.Timer();
 			timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 			timer.Enabled = true;
-		   // button1.Enabled = false;
 		}
 
 
@@ -73,13 +70,8 @@ namespace VinLotteri
 		{
 			int r = random.Next(Draws.Length);
 
-			for (int i = 0; i < DrawsArray.Length; i++)
-			{
-				if (AllNames[i].Equals(Draws[r]))
-				{
-					DrawsArray[i]++;
-				}
-			}
+			DrawsArray[r]++;
+		
 			PublishDraw(r);
 		}
 
@@ -97,7 +89,9 @@ namespace VinLotteri
 				{
 					label.Invoke(delLabelText, new object[] { label, text });
 				}
-				catch (Exception e) { }
+				catch (Exception e) {
+                    Console.WriteLine(e.StackTrace);
+                }
 			}
 			else
 			{
@@ -118,7 +112,7 @@ namespace VinLotteri
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			GraphWindow f = new GraphWindow(DrawsArray, AllNames, label3.Text);
+			GraphWindow f = new GraphWindow(DrawsArray, Draws, label3.Text);
 			f.Show();
 		}
 

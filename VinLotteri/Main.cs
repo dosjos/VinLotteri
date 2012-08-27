@@ -10,14 +10,16 @@ using System.Collections;
 using System.Globalization;
 using System.IO;
 
+
+
 namespace VinLotteri
 {
     public partial class Main : Form
     {
-        static IList list = new ArrayList();
-        String name;
-        int week;
-        String[] AllNames;
+        private static String NAMEFILE = "Names.txt";
+        private static IList list = new ArrayList();
+        private String name;
+        private int week;
 
         CultureInfo myCI;
         Calendar myCal;
@@ -28,36 +30,9 @@ namespace VinLotteri
         public Main()
         {
             InitializeComponent();
-            comboBox1.Text = "Velg kjøper";
 
-            AllNames = new String[] {
-            "Alf",
-            "Anders Emil",
-            "Andreas",
-            "Bente",
-            "Christine",
-            "Daniel",
-            "Eivind",
-            "Fredrick",
-            "Geir",
-            "Jan Ole",
-            "Jon",
-            "Ragne",
-            "Connie",
-            "Vibeke",
-            "Petter",
-            "Ludvigsen", 
-            "Helene", 
-            "Lars", 
-            "Morten", 
-            "Maria",
-            "Helge", 
-            "Bent", 
-            "Ida", 
-            "Hege"
-            };
             button2.Enabled = false;
-            this.comboBox1.Items.AddRange(AllNames);
+            this.comboBox1.Items.AddRange(loadNames());
 
             myCI = new CultureInfo("en-US");
             myCal = myCI.Calendar;
@@ -71,6 +46,36 @@ namespace VinLotteri
 
             SetTitle();
             loadWeekSales();
+        }
+
+        /*
+         * Load names from the Names.txt file, the names are used in the dropdown list
+         */
+        private String[] loadNames()
+        {
+            ArrayList tempNames = new ArrayList();
+            using (StreamReader sr = new StreamReader(NAMEFILE))
+            {
+                String s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    tempNames.Add(s);
+                }
+            }
+            return tempNames.ToArray(typeof(string)) as string[];
+        }
+        /*
+         * Writes the names to the Names.txt file
+         */
+        private void saveNames()
+        {
+            using (StreamWriter sw = new StreamWriter(NAMEFILE))
+            {
+                for (int i = 0; i < comboBox1.Items.Count; i++)
+                {
+                    sw.WriteLine(comboBox1.Items[i]);
+                }
+            }
         }
 
         //Changes the title and week
@@ -106,13 +111,13 @@ namespace VinLotteri
                 }
                 catch (Exception e)
                 {
-
+                    Console.WriteLine(e.StackTrace);
                 }
             }
             sumSales();
             buttonEnabling();
         }
-
+        //Manages the Draw buton so that one can not draw while noone have any tickets
         private void buttonEnabling()
         {
             if (richTextBox1.Lines.Length > 0)
@@ -129,20 +134,39 @@ namespace VinLotteri
         private void button1_Click(object sender, EventArgs e)
         {
             name = comboBox1.Text;
-            int number = (int)numericUpDown1.Value;
-            for (int i = 0; i < number; i++)
+            if (name.Length > 2)
             {
-                richTextBox1.Text = name + "\n" + richTextBox1.Text;
+                CheckIfNameInListAndAdd(name);
+
+                int number = (int)numericUpDown1.Value;
+                for (int i = 0; i < number; i++)
+                {
+                    richTextBox1.Text = name + "\n" + richTextBox1.Text;
+                }
+                richTextBox1.Text = richTextBox1.Text.Trim();
+                saveInformation();
+                sumSales();
             }
-            richTextBox1.Text = richTextBox1.Text.Trim();
-            saveInformation();
-            sumSales();
         }
 
+        //Adds new names to the dropdown list
+        private void CheckIfNameInListAndAdd(string name)
+        {
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                if (comboBox1.Items[i].Equals(name))
+                {
+                    return;
+                }
+            }
+            comboBox1.Items.Add(name);
+            saveNames(); 
+        }
+        //Sums and updates a label
         private void sumSales()
         {
             label6.Text = "" + richTextBox1.Lines.Length + " Lodd er solgt (" + richTextBox1.Lines.Length * 20 + " kr)";
-            updateLoddCounter();    
+            updateLoddCounter();
         }
 
         //Writes sales to file
@@ -176,7 +200,8 @@ namespace VinLotteri
             {
                 arr[i] = richTextBox1.Lines[i];
             }
-            WinnerWindow ww = new WinnerWindow(arr, AllNames, this);
+
+            WinnerWindow ww = new WinnerWindow(arr, this);
             ww.Show();
         }
 
@@ -200,6 +225,7 @@ namespace VinLotteri
             changeWeek();
         }
 
+        //Removes the winning ticked from the pile of tickets, renders it impossibru to win twice on one ticket
         internal void RemoveWinner(string Winner)
         {
             int index = richTextBox1.Text.IndexOf(Winner);
@@ -207,7 +233,7 @@ namespace VinLotteri
             {
                 richTextBox1.Text = richTextBox1.Text.Remove(index, Winner.Length + 1); //This is the dirtiest bugfix ever
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 richTextBox1.Text = richTextBox1.Text.Remove(index, Winner.Length);
             }
@@ -226,11 +252,12 @@ namespace VinLotteri
             label7.Text = "" + richTextBox1.Lines.Length + " å trekke fra";
         }
 
+        //SAves the name of the winner to a file
         internal void SaveVinner(string Winner)
         {
             using (TextWriter tw = new StreamWriter(week + "_vinnere.txt", true))
             {
-             tw.Write(Winner + '\n');
+                tw.Write(Winner + '\n');
             }
         }
     }
