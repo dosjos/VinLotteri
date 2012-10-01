@@ -5,9 +5,7 @@ Vinlotteri for Nytt Krutt 2012
 
 Programmet er laget for å kunne foreta trekninger at diverse Vin og lignende.
 
-For å innstalere programmet må denne pakken lastes ned:
-https://github.com/dosjos/VinLotteri/blob/master/setup.zip
 
-Så er det bare til å unzippe og installere. Programmet finner du da i startmenyen under Visma -> VinLotteri
-Just kidding, instalasjonsfilen feiler, compile yourself
-Happy Vintrekking
+last ned prosjektet og åpne det med visual studio, trykk så F5 for å kjøre.
+
+Har ikke funnet ut hvordan jeg lager en instalsjonsfil som fungerer på andre sine maskiner....
