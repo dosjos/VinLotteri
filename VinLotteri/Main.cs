@@ -133,7 +133,7 @@ namespace VinLotteri
         //Register sale
         private void button1_Click(object sender, EventArgs e)
         {
-            name = comboBox1.Text;
+            name = comboBox1.Text.Trim();
             if (name.Length > 2)
             {
                 CheckIfNameInListAndAdd(name);
@@ -156,7 +156,7 @@ namespace VinLotteri
             {
                 if (comboBox1.Items[i].Equals(name))
                 {
-                    return;
+                    return; 
                 }
             }
             comboBox1.Items.Add(name);
@@ -239,7 +239,7 @@ namespace VinLotteri
             }
             finally
             {
-                richTextBox1.Text = richTextBox1.Text.Insert(index, "");
+               // richTextBox1.Text = richTextBox1.Text.Insert(index, "");
                 richTextBox1.Text.Trim();
                 saveInformation();
                 updateLoddCounter();
@@ -260,5 +260,17 @@ namespace VinLotteri
                 tw.Write(Winner + '\n');
             }
         }
+
+        //private void CheckIfNameInListAndAdd2(string name)
+        //{
+        //    var name2 = from names in comboBox1.Items
+        //                where names.Equals(name)
+        //                select names;
+
+        //    if (!name2.Equals(name))
+        //    {
+        //        comboBox1.Items.Add(name);
+        //    }
+        //}
     }
 }

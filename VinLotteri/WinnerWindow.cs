@@ -116,9 +116,5 @@ namespace VinLotteri
 			f.Show();
 		}
 
-
-
-
-		
 	}
 }
